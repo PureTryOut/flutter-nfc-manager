@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:nfc_manager/src/nfc_manager_android/nfc_manager_platform.dart';
 import 'package:nfc_manager/src/nfc_manager_ios/nfc_manager.dart';
 import 'package:nfc_manager/src/nfc_manager_ios/nfc_manager_platform.dart';
+import 'package:nfc_manager/src/nfc_manager_linux/nfc_manager_platform.dart';
 
 /// Provides access to the NFC session.
 abstract class NfcManager {
@@ -12,6 +13,7 @@ abstract class NfcManager {
     return _instance ??= switch (defaultTargetPlatform) {
       TargetPlatform.android => NfcManagerAndroidPlatform(),
       TargetPlatform.iOS => NfcManagerIosPlatform(),
+      TargetPlatform.linux => NfcManagerLinuxPlatform(),
       _ => throw UnsupportedError(
         '${defaultTargetPlatform.name} is not supported',
       ),
